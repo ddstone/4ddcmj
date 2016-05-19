@@ -27,7 +27,9 @@ class TimingViewController: UIViewController
                 let title = "经过" + Utility.toCost(NSDate().timeIntervalSinceDate(from)) + "，CD好了么?"
                 let message = "Message"
                 Utility.presentTwoButtonAlert(self, title: title, message: message) { (action) in
-                    self.isTiming = !self.isTiming
+                    self.performSegueWithIdentifier(Constant.TimeToProjectSegueIdentifier, sender: nil)
+                    // 最好留到时间真的加进数据库了再变回来，不然会丢失，而且好像这里有内存环
+//                    self.isTiming = !self.isTiming
                 }
                 
             } else {
@@ -63,6 +65,15 @@ class TimingViewController: UIViewController
         }
     }
     
+    // MARK: - Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constant.TimeToProjectSegueIdentifier {
+            let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
+            ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
+        }
+    }
+    
     // MARK: - Internal functions
     private func updateUI() {
         let name = isTiming ? Constant.WadeSuspend : Constant().WadeOntheGo
@@ -90,7 +101,7 @@ class TimingViewController: UIViewController
 
     // MARK: - Constains
     struct Constant {
-        static let IsCooldownReady = "CD好了么?"
+        static let TimeToProjectSegueIdentifier = "TimeToProjectSegueIdentifier"
         
         static let WadeSuspend = "Wade_suspend"
         var WadeOntheGo = "Wade_onthego" + String(arc4random()%UInt32(6))
@@ -99,6 +110,16 @@ class TimingViewController: UIViewController
         static let DBIsTimingKey = "DB isTiming Key"
         static let DBFromFile = "DB_from_file"
         static let DBFromKey = "DB from Key"
+    }
+}
+
+extension UIViewController {
+    var containerController: UIViewController {
+        if let navi = self as? UINavigationController {
+            return navi.visibleViewController!
+        } else {
+            return self
+        }
     }
 }
 

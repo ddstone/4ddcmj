@@ -9,7 +9,7 @@
 import UIKit
 
 class Utility {
-    static func presentTwoButtonAlert(controller: UIViewController, title: String, message: String, fun: (UIAlertAction) -> Void) {
+    static func presentTwoButtonAlert(controller: UIViewController, title: String, message: String, fun: ((UIAlertAction) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: fun))

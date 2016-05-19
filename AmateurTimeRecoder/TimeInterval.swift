@@ -11,12 +11,12 @@ import Foundation
 class TimeInterval: NSObject, NSCoding {
     var from: NSDate
     var to: NSDate
-    var last: Int
+    var last: Double
     
     init(from: NSDate, to: NSDate) {
         self.from = from
         self.to = to
-        last = Int(to.timeIntervalSinceDate(from))
+        last = to.timeIntervalSinceDate(from)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -28,6 +28,6 @@ class TimeInterval: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         from = aDecoder.decodeObjectForKey("from") as! NSDate
         to = aDecoder.decodeObjectForKey("to") as! NSDate
-        last = aDecoder.decodeObjectForKey("last") as! Int
+        last = aDecoder.decodeObjectForKey("last") as! Double
     }
 }
