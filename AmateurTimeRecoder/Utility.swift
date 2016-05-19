@@ -9,9 +9,21 @@
 import UIKit
 
 class Utility {
-    static func presentMessage(message: String) -> UIAlertController {
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
+    static func presentTwoButtonAlert(controller: UIViewController, title: String, message: String, fun: (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        return alert
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: fun))
+        controller.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    static func toCost(seconds: Double) -> String {
+        let nf = NSNumberFormatter()
+        nf.maximumFractionDigits = 1
+        switch seconds / 3600 {
+        case let hours where hours > 1:
+            return "\(nf.stringFromNumber(hours)!) 小时"
+        default:
+            return "\(nf.stringFromNumber(seconds / 60)!) 分钟"
+        }
     }
 }

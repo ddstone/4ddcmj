@@ -8,6 +8,12 @@
         <!--Timing View Controller-->
         <scene sceneID="Mzs-Sj-hvd">
             <objects>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
+                    <connections>
+                        <action selector="longTap:" destination="Ws7-fZ-Iuv" id="yB7-bU-k1t"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Ws7-fZ-Iuv" customClass="TimingViewController" customModule="AmateurTimeRecoder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3cr-Z6-TZY"/>
@@ -34,18 +40,13 @@
                             <constraint firstItem="vbh-ix-vuN" firstAttribute="leading" secondItem="rj3-tH-Hk1" secondAttribute="leading" id="fFm-jy-gsD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bVK-td-8Cg"/>
                     <connections>
                         <outlet property="timingView" destination="vbh-ix-vuN" id="UAw-15-Aad"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
-                    <connections>
-                        <action selector="longTap:" destination="Ws7-fZ-Iuv" id="yB7-bU-k1t"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2007" y="791"/>
+            <point key="canvasLocation" x="2459" y="751"/>
         </scene>
     </scenes>
 </document>

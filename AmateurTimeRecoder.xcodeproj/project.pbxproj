@@ -14,6 +14,9 @@
 		183C460E1CED326800ECEFA9 /* TimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C460D1CED326800ECEFA9 /* TimingViewController.swift */; };
 		183C46101CED3B0900ECEFA9 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C460F1CED3B0900ECEFA9 /* Database.swift */; };
 		183C46121CED3DC600ECEFA9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C46111CED3DC600ECEFA9 /* Utility.swift */; };
+		189FBC901CED5BC100C369F0 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC8F1CED5BC100C369F0 /* Project.swift */; };
+		189FBC921CED5BD500C369F0 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC911CED5BD500C369F0 /* TimeInterval.swift */; };
+		189FBC941CED5BE800C369F0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC931CED5BE800C369F0 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		183C460D1CED326800ECEFA9 /* TimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingViewController.swift; sourceTree = "<group>"; };
 		183C460F1CED3B0900ECEFA9 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		183C46111CED3DC600ECEFA9 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		189FBC8F1CED5BC100C369F0 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		189FBC911CED5BD500C369F0 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		189FBC931CED5BE800C369F0 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +66,33 @@
 			children = (
 				183C45F91CED323B00ECEFA9 /* AppDelegate.swift */,
 				183C460D1CED326800ECEFA9 /* TimingViewController.swift */,
-				183C460F1CED3B0900ECEFA9 /* Database.swift */,
-				183C46111CED3DC600ECEFA9 /* Utility.swift */,
 				183C45FD1CED323B00ECEFA9 /* Main.storyboard */,
+				189FBC8D1CED5B9F00C369F0 /* Module */,
+				189FBC8E1CED5BAD00C369F0 /* Utility */,
 				183C460B1CED325900ECEFA9 /* Assets.xcassets */,
 				183C46021CED323B00ECEFA9 /* LaunchScreen.storyboard */,
 				183C46051CED323B00ECEFA9 /* Info.plist */,
 			);
 			path = AmateurTimeRecoder;
+			sourceTree = "<group>";
+		};
+		189FBC8D1CED5B9F00C369F0 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				189FBC931CED5BE800C369F0 /* Category.swift */,
+				189FBC911CED5BD500C369F0 /* TimeInterval.swift */,
+				189FBC8F1CED5BC100C369F0 /* Project.swift */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		189FBC8E1CED5BAD00C369F0 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				183C46111CED3DC600ECEFA9 /* Utility.swift */,
+				183C460F1CED3B0900ECEFA9 /* Database.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +168,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				183C46121CED3DC600ECEFA9 /* Utility.swift in Sources */,
+				189FBC921CED5BD500C369F0 /* TimeInterval.swift in Sources */,
 				183C46101CED3B0900ECEFA9 /* Database.swift in Sources */,
 				183C460E1CED326800ECEFA9 /* TimingViewController.swift in Sources */,
+				189FBC901CED5BC100C369F0 /* Project.swift in Sources */,
 				183C45FA1CED323B00ECEFA9 /* AppDelegate.swift in Sources */,
+				189FBC941CED5BE800C369F0 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +323,7 @@
 				183C460A1CED323B00ECEFA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

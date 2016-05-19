@@ -24,19 +24,12 @@ class TimingViewController: UIViewController
     @IBAction func longTap(sender: UILongPressGestureRecognizer) {
         if sender.state == .Began {
             if isTiming {
-                let to = NSDate()
-                let seconds = to.timeIntervalSinceDate(from)
-                let nf = NSNumberFormatter()
-                nf.maximumFractionDigits = 1
-                let alert = UIAlertController(
-                    title: "Cool down is readdy~?",
-                    message: "\(nf.stringFromNumber(seconds)!) seconds",
-                    preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Ok", style: .Default) { (action) in
+                let title = "经过" + Utility.toCost(NSDate().timeIntervalSinceDate(from)) + "，CD好了么?"
+                let message = "Message"
+                Utility.presentTwoButtonAlert(self, title: title, message: message) { (action) in
                     self.isTiming = !self.isTiming
-                })
-                presentViewController(alert, animated: true, completion: nil)
+                }
+                
             } else {
                 from = NSDate()
                 isTiming = !isTiming
@@ -57,6 +50,7 @@ class TimingViewController: UIViewController
         }
         updateUI()
         
+        // Listen to backup when into background
         NSNotificationCenter.defaultCenter().addObserverForName(
             NotificationName.DidEnterBackground,
             object: UIApplication.sharedApplication().delegate,
@@ -96,6 +90,8 @@ class TimingViewController: UIViewController
 
     // MARK: - Constains
     struct Constant {
+        static let IsCooldownReady = "CD好了么?"
+        
         static let WadeSuspend = "Wade_suspend"
         var WadeOntheGo = "Wade_onthego" + String(arc4random()%UInt32(6))
         
