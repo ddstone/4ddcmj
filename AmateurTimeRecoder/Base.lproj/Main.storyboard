@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Og1-Tf-Baj" appends="YES" id="oR5-Qt-Ewl"/>
+                                    <outletCollection property="gestureRecognizers" destination="W5h-cN-3HW" appends="YES" id="vO0-1J-dVV"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -39,13 +39,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Og1-Tf-Baj">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
                     <connections>
-                        <action selector="tap:" destination="Ws7-fZ-Iuv" id="VyY-JS-1ED"/>
+                        <action selector="longTap:" destination="Ws7-fZ-Iuv" id="yB7-bU-k1t"/>
                     </connections>
-                </tapGestureRecognizer>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2055" y="836"/>
+            <point key="canvasLocation" x="2007" y="791"/>
         </scene>
     </scenes>
 </document>
