@@ -11,14 +11,15 @@ import Foundation
 class Project: NSObject, NSCoding {
     let name: String
     let create: NSDate
-    var category: Category
     var timeIntervals: [TimeInterval]
     var lastest: NSDate!
+    var last: Double {
+        return timeIntervals.reduce(0) { $0 + $1.last }
+    }
 
     
-    init(name: String, category: Category) {
+    init(name: String) {
         self.name = name
-        self.category = category
         self.create = NSDate()
         self.timeIntervals = [TimeInterval]()
     }
@@ -26,7 +27,6 @@ class Project: NSObject, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: "name")
         aCoder.encodeObject(create, forKey: "create")
-        aCoder.encodeObject(category, forKey: "category")
         aCoder.encodeObject(timeIntervals, forKey: "timeIntervals")
         aCoder.encodeObject(lastest, forKey: "lastest")
     }
@@ -34,7 +34,6 @@ class Project: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObjectForKey("name") as! String
         create = aDecoder.decodeObjectForKey("create") as! NSDate
-        category = aDecoder.decodeObjectForKey("category") as! Category
         timeIntervals = aDecoder.decodeObjectForKey("timeIntervals") as! [TimeInterval]
         lastest = aDecoder.decodeObjectForKey("lastest") as! NSDate!
     }

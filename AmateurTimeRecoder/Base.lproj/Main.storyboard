@@ -119,12 +119,6 @@
         <!--Timing View Controller-->
         <scene sceneID="Mzs-Sj-hvd">
             <objects>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
-                    <connections>
-                        <action selector="longTap:" destination="Ws7-fZ-Iuv" id="yB7-bU-k1t"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Ws7-fZ-Iuv" customClass="TimingViewController" customModule="AmateurTimeRecoder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3cr-Z6-TZY"/>
@@ -157,6 +151,12 @@
                         <segue destination="6Pf-NH-VFl" kind="presentation" identifier="TimeToProjectSegueIdentifier" id="zhl-Kg-9XC"/>
                     </connections>
                 </viewController>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
+                    <connections>
+                        <action selector="longTap:" destination="Ws7-fZ-Iuv" id="yB7-bU-k1t"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3146" y="1028"/>
         </scene>

@@ -16,7 +16,6 @@
 		183C46121CED3DC600ECEFA9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C46111CED3DC600ECEFA9 /* Utility.swift */; };
 		189FBC901CED5BC100C369F0 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC8F1CED5BC100C369F0 /* Project.swift */; };
 		189FBC921CED5BD500C369F0 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC911CED5BD500C369F0 /* TimeInterval.swift */; };
-		189FBC941CED5BE800C369F0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC931CED5BE800C369F0 /* Category.swift */; };
 		189FBC9A1CED658100C369F0 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC991CED658100C369F0 /* ProjectsTableViewController.swift */; };
 		189FBC9C1CED65A000C369F0 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC9B1CED65A000C369F0 /* ProjectTableViewCell.swift */; };
 		189FBC9E1CED6FCF00C369F0 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC9D1CED6FCF00C369F0 /* AddProjectViewController.swift */; };
@@ -34,7 +33,6 @@
 		183C46111CED3DC600ECEFA9 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		189FBC8F1CED5BC100C369F0 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		189FBC911CED5BD500C369F0 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
-		189FBC931CED5BE800C369F0 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		189FBC991CED658100C369F0 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		189FBC9B1CED65A000C369F0 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		189FBC9D1CED6FCF00C369F0 /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 		189FBC8D1CED5B9F00C369F0 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				189FBC931CED5BE800C369F0 /* Category.swift */,
 				189FBC911CED5BD500C369F0 /* TimeInterval.swift */,
 				189FBC8F1CED5BC100C369F0 /* Project.swift */,
 			);
@@ -199,7 +196,6 @@
 				183C460E1CED326800ECEFA9 /* TimingViewController.swift in Sources */,
 				189FBC901CED5BC100C369F0 /* Project.swift in Sources */,
 				183C45FA1CED323B00ECEFA9 /* AppDelegate.swift in Sources */,
-				189FBC941CED5BE800C369F0 /* Category.swift in Sources */,
 				189FBC9E1CED6FCF00C369F0 /* AddProjectViewController.swift in Sources */,
 				189FBC9A1CED658100C369F0 /* ProjectsTableViewController.swift in Sources */,
 			);

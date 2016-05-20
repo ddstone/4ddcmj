@@ -10,6 +10,9 @@ import UIKit
 
 class ProjectsTableViewController: UITableViewController, AddProject {
     
+    var projects = [[Project]]() { didSet { tableView.reloadData() } }
+    
+    var timingVC: TurnOffTiming!
     var timeIntervals: TimeInterval!
     var apObserver: NSObjectProtocol?
 
@@ -17,16 +20,29 @@ class ProjectsTableViewController: UITableViewController, AddProject {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // MARK: - Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = Utility.toCost(timeIntervals.last)
+        restoreData()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        storeData()
+    }
+
     // Delegate
     
     func addProject(name: String) {
-        print("It was \(name)")
+        let newProject = Project(name: name)
+        if projects.isEmpty {
+            projects.append([newProject])
+        } else {
+            projects[0].append(newProject)
+        }
     }
     
     // Segue
@@ -35,33 +51,57 @@ class ProjectsTableViewController: UITableViewController, AddProject {
             (segue.destinationViewController.containerController as! AddProjectViewController).addProjectItem = self
         }
     }
-
-    struct Constants {
-        static let AddProjectSegueIdentifier = "AddProjectSegueIdentifier"
-    }
     
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return projects.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return projects[section].count
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.ProjectCellReuseIdentifier, forIndexPath: indexPath)
 
         // Configure the cell...
+        cell.textLabel?.text = projects[indexPath.section][indexPath.row].name
+        cell.detailTextLabel?.text = "\(Utility.toCost(projects[indexPath.section][indexPath.row].last))"
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let project = projects[indexPath.section][indexPath.row]
+        Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + project.name + "中么") { (action) in
+            project.addTimeInterval(self.timeIntervals)
+            self.timingVC.turnOffTiming()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+   
+    // MARK: - Internal functions
+    private func storeData() {
+        AppDelegate.database.insert(Constants.DBProjectsFileName, obj: projects, key: Constants.DBProjectsKey)
+    }
+    
+    private func restoreData() {
+        if let pros = AppDelegate.database.read(Constants.DBProjectsFileName, key: Constants.DBProjectsKey) as? [[Project]] {
+            projects = pros
+        }
+    }
+    
+    // MARK: - Constants
+    struct Constants {
+        static let DBProjectsFileName = "DBProjectsFile"
+        static let DBProjectsKey = "DBProjectsKey"
 
+        static let AddProjectSegueIdentifier = "AddProjectSegueIdentifier"
+        static let ProjectCellReuseIdentifier = "ProjectCellReuseIdentifier"
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -107,4 +147,8 @@ class ProjectsTableViewController: UITableViewController, AddProject {
     }
     */
 
+}
+
+protocol TurnOffTiming {
+    func turnOffTiming()
 }

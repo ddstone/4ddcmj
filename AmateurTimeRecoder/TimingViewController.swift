@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimingViewController: UIViewController
+class TimingViewController: UIViewController, TurnOffTiming
 {
     var isTiming = false {
         didSet {
@@ -25,13 +25,15 @@ class TimingViewController: UIViewController
         if sender.state == .Began {
             if isTiming {
                 let title = "经过" + Utility.toCost(NSDate().timeIntervalSinceDate(from)) + "，CD好了么?"
-                let message = "Message"
-                Utility.presentTwoButtonAlert(self, title: title, message: message) { (action) in
+                let alert = UIAlertController(title: title, message: "", preferredStyle: .ActionSheet)
+                alert.addAction(UIAlertAction(title: "确定", style: .Default) { (action) in
                     self.performSegueWithIdentifier(Constant.TimeToProjectSegueIdentifier, sender: nil)
-                    // 最好留到时间真的加进数据库了再变回来，不然会丢失，而且好像这里有内存环
-//                    self.isTiming = !self.isTiming
-                }
-                
+                })
+                alert.addAction(UIAlertAction(title: "清零", style: .Destructive) { (action) in
+                    self.isTiming = false
+                })
+                alert.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: nil))
+                presentViewController(alert, animated: true, completion: nil)
             } else {
                 from = NSDate()
                 isTiming = !isTiming
@@ -71,7 +73,13 @@ class TimingViewController: UIViewController
         if segue.identifier == Constant.TimeToProjectSegueIdentifier {
             let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
             ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
+            ptvc.timingVC = self
         }
+    }
+    
+    // MARK: - Delegate
+    func turnOffTiming() {
+        isTiming = !isTiming
     }
     
     // MARK: - Internal functions
