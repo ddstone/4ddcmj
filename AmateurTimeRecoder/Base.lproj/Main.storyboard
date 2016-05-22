@@ -58,7 +58,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="JYJ-IJ-ilU" kind="show" identifier="Show Duration Picker Identifier" id="fRF-C3-Ypg"/>
+                        <segue destination="JYJ-IJ-ilU" kind="presentation" identifier="Show Duration Picker Identifier" id="fRF-C3-Ypg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFn-Jq-RIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,6 +101,9 @@
                                 <rect key="frame" x="325" y="416" width="82" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel" destination="JYJ-IJ-ilU" eventType="touchUpInside" id="gJs-Fg-4z2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,7 +237,7 @@
                 </pongPressGestureRecognizer>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3146" y="1028"/>
+            <point key="canvasLocation" x="2862" y="373"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7tO-ai-BlE">

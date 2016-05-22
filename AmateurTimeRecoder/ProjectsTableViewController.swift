@@ -11,6 +11,7 @@ import UIKit
 class ProjectsTableViewController: UITableViewController, AddProject, AdjustDateAccordingToDuration {
     
     var projects = [[Project]]() { didSet { tableView.reloadData() } }
+    var selectedProject: Project!
     
     var timingVC: TurnOffTiming!
     var timeIntervals: TimeInterval!
@@ -24,10 +25,10 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = Utility.toCost(timeIntervals.last)
         restoreData()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        updateUI()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -48,13 +49,16 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     }
     
     func adjustDateAccordingToDuration(duration: NSTimeInterval) {
-        let newTo = NSDate(timeInterval: duration, sinceDate: timeIntervals.from)
-        let df = NSDateFormatter()
-        df.dateStyle = .ShortStyle
-        df.timeStyle = .ShortStyle
-        print("b4: \(df.stringFromDate(timeIntervals.from)) -> \(df.stringFromDate(timeIntervals.to))")
-        print("according to \(duration / 60)")
-        print("after: \(df.stringFromDate(newTo))")
+        if duration != timeIntervals.last {
+            let newTo = NSDate(timeInterval: duration, sinceDate: timeIntervals.from)
+            timeIntervals.setNewTo(newTo)
+            updateUI()
+            Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + selectedProject.name + "中么") { (action) in
+                        self.selectedProject.addTimeInterval(self.timeIntervals)
+                        self.timingVC.turnOffTiming()
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+        }
     }
     
     // Segue
@@ -94,15 +98,10 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let project = projects[indexPath.section][indexPath.row]
+        selectedProject = projects[indexPath.section][indexPath.row]
         performSegueWithIdentifier(Constants.ShowDurationPickerSegueIdentifier, sender: nil)
-//        Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + project.name + "中么") { (action) in
-//            project.addTimeInterval(self.timeIntervals)
-//            self.timingVC.turnOffTiming()
-//            self.dismissViewControllerAnimated(true, completion: nil)
-//        }
     }
-   
+    
     // MARK: - Internal functions
     private func storeData() {
         AppDelegate.database.insert(Constants.DBProjectsFileName, obj: projects, key: Constants.DBProjectsKey)
@@ -112,6 +111,10 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
         if let pros = AppDelegate.database.read(Constants.DBProjectsFileName, key: Constants.DBProjectsKey) as? [[Project]] {
             projects = pros
         }
+    }
+    
+    private func updateUI() {
+        title = Utility.toCost(timeIntervals.last)
     }
     
     // MARK: - Constants
@@ -156,16 +159,6 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 

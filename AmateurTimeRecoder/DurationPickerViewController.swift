@@ -17,7 +17,12 @@ class DurationPickerViewController: UIViewController
     @IBOutlet weak var durationPicker: UIDatePicker!
     
     @IBAction func ok() {
-        delegate?.adjustDateAccordingToDuration(durationPicker.countDownDuration)
+        dismissViewControllerAnimated(true) {
+            self.delegate?.adjustDateAccordingToDuration(self.durationPicker.countDownDuration)
+        }
+    }
+    
+    @IBAction func cancel() {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

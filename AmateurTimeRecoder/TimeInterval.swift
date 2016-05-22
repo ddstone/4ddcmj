@@ -30,4 +30,20 @@ class TimeInterval: NSObject, NSCoding {
         to = aDecoder.decodeObjectForKey("to") as! NSDate
         last = aDecoder.decodeObjectForKey("last") as! Double
     }
+    
+    // MARK: - API
+    
+    func setNewTo(newTo: NSDate) {
+        to = newTo
+        last = to.timeIntervalSinceDate(from)
+    }
+}
+
+extension TimeInterval {
+    override var description: String {
+        let nf = NSDateFormatter()
+        nf.dateStyle = .ShortStyle
+        nf.timeStyle = .ShortStyle
+        return nf.stringFromDate(from) + " -> " + nf.stringFromDate(to) + ": " + "\(last)"
+    }
 }
