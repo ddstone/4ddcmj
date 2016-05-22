@@ -14,6 +14,7 @@
 		183C460E1CED326800ECEFA9 /* TimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C460D1CED326800ECEFA9 /* TimingViewController.swift */; };
 		183C46101CED3B0900ECEFA9 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C460F1CED3B0900ECEFA9 /* Database.swift */; };
 		183C46121CED3DC600ECEFA9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C46111CED3DC600ECEFA9 /* Utility.swift */; };
+		189633BC1CF1F9F9003E4D73 /* DurationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189633BB1CF1F9F9003E4D73 /* DurationPickerViewController.swift */; };
 		189FBC901CED5BC100C369F0 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC8F1CED5BC100C369F0 /* Project.swift */; };
 		189FBC921CED5BD500C369F0 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC911CED5BD500C369F0 /* TimeInterval.swift */; };
 		189FBC9A1CED658100C369F0 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FBC991CED658100C369F0 /* ProjectsTableViewController.swift */; };
@@ -31,6 +32,7 @@
 		183C460D1CED326800ECEFA9 /* TimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingViewController.swift; sourceTree = "<group>"; };
 		183C460F1CED3B0900ECEFA9 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		183C46111CED3DC600ECEFA9 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		189633BB1CF1F9F9003E4D73 /* DurationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationPickerViewController.swift; sourceTree = "<group>"; };
 		189FBC8F1CED5BC100C369F0 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		189FBC911CED5BD500C369F0 /* TimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		189FBC991CED658100C369F0 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				183C460D1CED326800ECEFA9 /* TimingViewController.swift */,
 				189FBC991CED658100C369F0 /* ProjectsTableViewController.swift */,
+				189633BB1CF1F9F9003E4D73 /* DurationPickerViewController.swift */,
 				189FBC9D1CED6FCF00C369F0 /* AddProjectViewController.swift */,
 			);
 			name = Controller;
@@ -195,6 +198,7 @@
 				183C46101CED3B0900ECEFA9 /* Database.swift in Sources */,
 				183C460E1CED326800ECEFA9 /* TimingViewController.swift in Sources */,
 				189FBC901CED5BC100C369F0 /* Project.swift in Sources */,
+				189633BC1CF1F9F9003E4D73 /* DurationPickerViewController.swift in Sources */,
 				183C45FA1CED323B00ECEFA9 /* AppDelegate.swift in Sources */,
 				189FBC9E1CED6FCF00C369F0 /* AddProjectViewController.swift in Sources */,
 				189FBC9A1CED658100C369F0 /* ProjectsTableViewController.swift in Sources */,

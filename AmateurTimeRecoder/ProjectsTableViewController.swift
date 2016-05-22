@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectsTableViewController: UITableViewController, AddProject {
+class ProjectsTableViewController: UITableViewController, AddProject, AdjustDateAccordingToDuration {
     
     var projects = [[Project]]() { didSet { tableView.reloadData() } }
     
@@ -26,6 +26,8 @@ class ProjectsTableViewController: UITableViewController, AddProject {
         
         title = Utility.toCost(timeIntervals.last)
         restoreData()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -45,10 +47,28 @@ class ProjectsTableViewController: UITableViewController, AddProject {
         }
     }
     
+    func adjustDateAccordingToDuration(duration: NSTimeInterval) {
+        let newTo = NSDate(timeInterval: duration, sinceDate: timeIntervals.from)
+        let df = NSDateFormatter()
+        df.dateStyle = .ShortStyle
+        df.timeStyle = .ShortStyle
+        print("b4: \(df.stringFromDate(timeIntervals.from)) -> \(df.stringFromDate(timeIntervals.to))")
+        print("according to \(duration / 60)")
+        print("after: \(df.stringFromDate(newTo))")
+    }
+    
     // Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Constants.AddProjectSegueIdentifier {
-            (segue.destinationViewController.containerController as! AddProjectViewController).addProjectItem = self
+        if let identifier = segue.identifier {
+            switch identifier {
+            case Constants.AddProjectSegueIdentifier:
+                (segue.destinationViewController.containerController as! AddProjectViewController).addProjectItem = self
+            case Constants.ShowDurationPickerSegueIdentifier:
+                let dpvc = segue.destinationViewController.containerController as! DurationPickerViewController
+                dpvc.duration = timeIntervals.last
+                dpvc.delegate = self
+            default: break
+            }
         }
     }
     
@@ -75,11 +95,12 @@ class ProjectsTableViewController: UITableViewController, AddProject {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let project = projects[indexPath.section][indexPath.row]
-        Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + project.name + "中么") { (action) in
-            project.addTimeInterval(self.timeIntervals)
-            self.timingVC.turnOffTiming()
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
+        performSegueWithIdentifier(Constants.ShowDurationPickerSegueIdentifier, sender: nil)
+//        Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + project.name + "中么") { (action) in
+//            project.addTimeInterval(self.timeIntervals)
+//            self.timingVC.turnOffTiming()
+//            self.dismissViewControllerAnimated(true, completion: nil)
+//        }
     }
    
     // MARK: - Internal functions
@@ -100,6 +121,7 @@ class ProjectsTableViewController: UITableViewController, AddProject {
 
         static let AddProjectSegueIdentifier = "AddProjectSegueIdentifier"
         static let ProjectCellReuseIdentifier = "ProjectCellReuseIdentifier"
+        static let ShowDurationPickerSegueIdentifier = "Show Duration Picker Identifier"
     }
     
     /*

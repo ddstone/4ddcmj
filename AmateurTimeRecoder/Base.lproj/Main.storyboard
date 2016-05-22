@@ -57,10 +57,86 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="JYJ-IJ-ilU" kind="show" identifier="Show Duration Picker Identifier" id="fRF-C3-Ypg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFn-Jq-RIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3769" y="-404"/>
+        </scene>
+        <!--Duration Picker View Controller-->
+        <scene sceneID="VnJ-KH-oCv">
+            <objects>
+                <viewController id="JYJ-IJ-ilU" customClass="DurationPickerViewController" customModule="AmateurTimeRecoder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ag0-tY-ZX9"/>
+                        <viewControllerLayoutGuide type="bottom" id="0cv-le-9yW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zXL-oF-Uho">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-7a-yRQ">
+                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="485620248.68181503">
+                                    <!--2016-05-22 14:30:48 +0000-->
+                                </date>
+                            </datePicker>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-iB-ZiJ">
+                                <rect key="frame" x="20" y="416" width="165" height="45"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKX-lT-noX">
+                                <rect key="frame" x="415" y="416" width="165" height="45"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49C-7p-svZ">
+                                <rect key="frame" x="193" y="416" width="82" height="45"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="ok" destination="JYJ-IJ-ilU" eventType="touchUpInside" id="YKb-fJ-mMy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOp-YU-h2J">
+                                <rect key="frame" x="325" y="416" width="82" height="45"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="top" secondItem="zOp-YU-h2J" secondAttribute="top" id="1RG-ho-zL8"/>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="top" secondItem="SPg-7a-yRQ" secondAttribute="bottom" constant="8" symbolic="YES" id="29p-F1-NAw"/>
+                            <constraint firstItem="kKX-lT-noX" firstAttribute="centerY" secondItem="kxe-iB-ZiJ" secondAttribute="centerY" id="2tE-ey-Z0U"/>
+                            <constraint firstItem="kxe-iB-ZiJ" firstAttribute="centerY" secondItem="49C-7p-svZ" secondAttribute="centerY" id="4T9-MV-xvy"/>
+                            <constraint firstItem="SPg-7a-yRQ" firstAttribute="centerY" secondItem="zXL-oF-Uho" secondAttribute="centerY" id="4XH-nI-nrB"/>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="width" secondItem="zOp-YU-h2J" secondAttribute="width" id="664-Ky-BsC"/>
+                            <constraint firstItem="kxe-iB-ZiJ" firstAttribute="bottom" secondItem="49C-7p-svZ" secondAttribute="bottom" id="6Tl-9d-PX4"/>
+                            <constraint firstItem="kKX-lT-noX" firstAttribute="height" secondItem="kxe-iB-ZiJ" secondAttribute="height" id="7al-N5-x6q"/>
+                            <constraint firstItem="SPg-7a-yRQ" firstAttribute="leading" secondItem="zXL-oF-Uho" secondAttribute="leading" id="DQf-1X-5dm"/>
+                            <constraint firstAttribute="trailing" secondItem="SPg-7a-yRQ" secondAttribute="trailing" id="M4r-X2-6PE"/>
+                            <constraint firstItem="kxe-iB-ZiJ" firstAttribute="height" secondItem="49C-7p-svZ" secondAttribute="height" id="Mtp-E0-luk"/>
+                            <constraint firstItem="kKX-lT-noX" firstAttribute="leading" secondItem="zOp-YU-h2J" secondAttribute="trailing" constant="8" symbolic="YES" id="N13-7C-P25"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kxe-iB-ZiJ" secondAttribute="leading" id="Nqz-KY-qqh"/>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="height" secondItem="zOp-YU-h2J" secondAttribute="height" id="OIK-lp-LvX"/>
+                            <constraint firstItem="kxe-iB-ZiJ" firstAttribute="top" secondItem="49C-7p-svZ" secondAttribute="top" id="UBg-UF-UXt"/>
+                            <constraint firstItem="zOp-YU-h2J" firstAttribute="leading" secondItem="49C-7p-svZ" secondAttribute="trailing" constant="50" id="avn-36-GWS"/>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="centerY" secondItem="zOp-YU-h2J" secondAttribute="centerY" id="cDU-6B-MKc"/>
+                            <constraint firstItem="kKX-lT-noX" firstAttribute="width" secondItem="kxe-iB-ZiJ" secondAttribute="width" id="ddZ-lV-6hk"/>
+                            <constraint firstItem="kKX-lT-noX" firstAttribute="bottom" secondItem="kxe-iB-ZiJ" secondAttribute="bottom" id="loQ-KS-3zT"/>
+                            <constraint firstItem="kKX-lT-noX" firstAttribute="top" secondItem="kxe-iB-ZiJ" secondAttribute="top" id="nkH-bo-Eex"/>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="leading" secondItem="kxe-iB-ZiJ" secondAttribute="trailing" constant="8" symbolic="YES" id="u5V-5O-NEQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kKX-lT-noX" secondAttribute="trailing" id="uDo-WA-8kw"/>
+                            <constraint firstItem="49C-7p-svZ" firstAttribute="bottom" secondItem="zOp-YU-h2J" secondAttribute="bottom" id="z3Q-xG-shK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="durationPicker" destination="SPg-7a-yRQ" id="UWz-Aa-fcH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KrN-zd-K4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3846" y="373"/>
         </scene>
         <!--新建项目-->
         <scene sceneID="fbl-fD-d2h">
