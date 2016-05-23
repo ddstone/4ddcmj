@@ -46,7 +46,7 @@ class TimingViewController: UIViewController, TurnOffTiming
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
             // TODO: shake 出分析饼图
-            
+            performSegueWithIdentifier(Constant.TimeToProjectSegueIdentifier, sender: event)
         }
     }
 
@@ -80,9 +80,15 @@ class TimingViewController: UIViewController, TurnOffTiming
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constant.TimeToProjectSegueIdentifier {
-            let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
-            ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
-            ptvc.timingVC = self
+            switch sender {
+            case let motionEvent where motionEvent is UIEvent:
+                break
+            case nil:
+                let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
+                ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
+                ptvc.timingVC = self
+            default: break
+            }
         }
     }
     
