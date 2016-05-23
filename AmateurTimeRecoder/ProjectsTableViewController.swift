@@ -20,7 +20,7 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     @IBAction func cancel(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     // MARK: - Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

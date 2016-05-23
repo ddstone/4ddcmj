@@ -41,6 +41,15 @@ class TimingViewController: UIViewController, TurnOffTiming
         }
     }
     
+    // MARK: - Respond to shake gesture
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            // TODO: shake 出分析饼图
+            
+        }
+    }
+
     // MARK: - Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

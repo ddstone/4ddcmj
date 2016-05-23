@@ -89,20 +89,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKX-lT-noX">
                                 <rect key="frame" x="415" y="416" width="165" height="45"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49C-7p-svZ">
-                                <rect key="frame" x="193" y="416" width="82" height="45"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="OK"/>
-                                <connections>
-                                    <action selector="ok" destination="JYJ-IJ-ilU" eventType="touchUpInside" id="YKb-fJ-mMy"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOp-YU-h2J">
                                 <rect key="frame" x="325" y="416" width="82" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="ok" destination="JYJ-IJ-ilU" eventType="touchUpInside" id="ji1-Hl-dTu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49C-7p-svZ">
+                                <rect key="frame" x="193" y="416" width="82" height="45"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancel" destination="JYJ-IJ-ilU" eventType="touchUpInside" id="gJs-Fg-4z2"/>
+                                    <action selector="cancel" destination="JYJ-IJ-ilU" eventType="touchUpInside" id="IAx-Ue-fTY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrN-zd-K4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3846" y="373"/>
+            <point key="canvasLocation" x="3620" y="349"/>
         </scene>
         <!--新建项目-->
         <scene sceneID="fbl-fD-d2h">
