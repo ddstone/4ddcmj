@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--选择项目-->
@@ -228,6 +230,7 @@
                     <connections>
                         <outlet property="timingView" destination="vbh-ix-vuN" id="UAw-15-Aad"/>
                         <segue destination="6Pf-NH-VFl" kind="presentation" identifier="TimeToProjectSegueIdentifier" id="zhl-Kg-9XC"/>
+                        <segue destination="3cO-Rp-HWb" kind="presentation" identifier="ShowStatisticsSegueIdentifier" id="4mQ-Sh-dht"/>
                     </connections>
                 </viewController>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
@@ -238,6 +241,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ce5-5D-AIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2862" y="373"/>
+        </scene>
+        <!--Statistics View Controller-->
+        <scene sceneID="9ZF-Oi-mwk">
+            <objects>
+                <viewController id="3cO-Rp-HWb" customClass="StatisticsViewController" customModule="AmateurTimeRecoder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ufJ-DV-HbA"/>
+                        <viewControllerLayoutGuide type="bottom" id="TKw-IB-haq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sbn-rY-GlU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atd-2a-qc4">
+                                <rect key="frame" x="150" y="28" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="atd-2a-qc4" secondAttribute="height" multiplier="1:1" id="Sgs-vY-15H"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" relation="lessThanOrEqual" secondItem="atd-2a-qc4" secondAttribute="leading" id="1w2-WA-qqz"/>
+                            <constraint firstItem="atd-2a-qc4" firstAttribute="top" secondItem="ufJ-DV-HbA" secondAttribute="bottom" constant="8" symbolic="YES" id="2N3-Go-Hrk"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="atd-2a-qc4" secondAttribute="trailing" id="Iiy-Kf-bha"/>
+                            <constraint firstItem="atd-2a-qc4" firstAttribute="centerX" secondItem="Sbn-rY-GlU" secondAttribute="centerX" id="MIM-tm-qri"/>
+                            <constraint firstItem="atd-2a-qc4" firstAttribute="width" secondItem="Sbn-rY-GlU" secondAttribute="width" multiplier="1/2" id="sVs-9O-69u"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="PieCharView" destination="atd-2a-qc4" id="9ye-4c-fXq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SB5-D3-MfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2862" y="1207"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7tO-ai-BlE">

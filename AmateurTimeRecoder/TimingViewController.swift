@@ -46,7 +46,7 @@ class TimingViewController: UIViewController, TurnOffTiming
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
             // TODO: shake 出分析饼图
-            performSegueWithIdentifier(Constant.TimeToProjectSegueIdentifier, sender: event)
+            performSegueWithIdentifier(Constant.ShowStatisticsSegueIdentifier, sender: event)
         }
     }
 
@@ -125,6 +125,7 @@ class TimingViewController: UIViewController, TurnOffTiming
     // MARK: - Constains
     struct Constant {
         static let TimeToProjectSegueIdentifier = "TimeToProjectSegueIdentifier"
+        static let ShowStatisticsSegueIdentifier = "ShowStatisticsSegueIdentifier"
         
         static let WadeSuspend = "Wade_suspend"
         var WadeOntheGo = "Wade_onthego" + String(arc4random()%UInt32(6))
