@@ -61,11 +61,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="JYJ-IJ-ilU" kind="presentation" identifier="Show Duration Picker Identifier" id="fRF-C3-Ypg"/>
+                        <segue destination="3cO-Rp-HWb" kind="presentation" identifier="Show Statistics Segue Identifier" id="t7Y-Ug-Pcn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFn-Jq-RIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3769" y="-404"/>
+            <point key="canvasLocation" x="3772" y="-404"/>
         </scene>
         <!--Duration Picker View Controller-->
         <scene sceneID="VnJ-KH-oCv">
@@ -230,7 +231,6 @@
                     <connections>
                         <outlet property="timingView" destination="vbh-ix-vuN" id="UAw-15-Aad"/>
                         <segue destination="6Pf-NH-VFl" kind="presentation" identifier="TimeToProjectSegueIdentifier" id="zhl-Kg-9XC"/>
-                        <segue destination="3cO-Rp-HWb" kind="presentation" identifier="ShowStatisticsSegueIdentifier" id="4mQ-Sh-dht"/>
                     </connections>
                 </viewController>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5h-cN-3HW">
@@ -276,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SB5-D3-MfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2862" y="1207"/>
+            <point key="canvasLocation" x="3772" y="-1233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7tO-ai-BlE">

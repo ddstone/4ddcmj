@@ -13,8 +13,8 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     var projects = [[Project]]() { didSet { tableView.reloadData() } }
     var selectedProject: Project!
     
-    var timingVC: TurnOffTiming!
-    var timeIntervals: TimeInterval!
+    var timingVC: TurnOffTiming?
+    var timeIntervals: TimeInterval?
     var apObserver: NSObjectProtocol?
 
     @IBAction func cancel(sender: UIBarButtonItem) {
@@ -24,7 +24,7 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     // NARK: - Respond to shake gesture
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
-            dismissViewControllerAnimated(true, completion: nil)
+            performSegueWithIdentifier(Constants.ShowStatisticsSegueIdentifier, sender: nil)
         }
     }
 
@@ -56,15 +56,17 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     }
     
     func adjustDateAccordingToDuration(duration: NSTimeInterval) {
-        if duration != timeIntervals.last {
-            let newTo = NSDate(timeInterval: duration, sinceDate: timeIntervals.from)
-            timeIntervals.setNewTo(newTo)
-            updateUI()
-            Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + selectedProject.name + "中么") { (action) in
-                self.selectedProject.addTimeInterval(self.timeIntervals)
-                self.timingVC.turnOffTiming()
-                self.dismissViewControllerAnimated(true, completion: nil)
-                    }
+        if let ti = timeIntervals {
+            if duration != ti.last {
+                let newTo = NSDate(timeInterval: duration, sinceDate: ti.from)
+                ti.setNewTo(newTo)
+                updateUI()
+                Utility.presentTwoButtonAlert(self, title: "加入时间", message: "确定将" + title! + "加入到" + selectedProject.name + "中么") { (action) in
+                    self.selectedProject.addTimeInterval(ti)
+                    self.timingVC!.turnOffTiming()
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
         }
     }
     
@@ -76,7 +78,7 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
                 (segue.destinationViewController.containerController as! AddProjectViewController).addProjectItem = self
             case Constants.ShowDurationPickerSegueIdentifier:
                 let dpvc = segue.destinationViewController.containerController as! DurationPickerViewController
-                dpvc.duration = timeIntervals.last
+                dpvc.duration = timeIntervals!.last
                 dpvc.delegate = self
             default: break
             }
@@ -105,9 +107,11 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedProject = projects[indexPath.section][indexPath.row]
         if timeIntervals != nil {
-            performSegueWithIdentifier(Constants.ShowDurationPickerSegueIdentifier, sender: nil)
+            selectedProject = projects[indexPath.section][indexPath.row]
+            if timeIntervals != nil {
+                performSegueWithIdentifier(Constants.ShowDurationPickerSegueIdentifier, sender: nil)
+            }
         }
     }
     
@@ -123,7 +127,11 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
     }
     
     private func updateUI() {
-        title = Utility.toCost(timeIntervals.last)
+        if let ti = timeIntervals {
+            title = Utility.toCost(ti.last)
+        } else {
+            title = "项目们"
+        }
     }
     
     // MARK: - Constants
@@ -134,6 +142,7 @@ class ProjectsTableViewController: UITableViewController, AddProject, AdjustDate
         static let AddProjectSegueIdentifier = "AddProjectSegueIdentifier"
         static let ProjectCellReuseIdentifier = "ProjectCellReuseIdentifier"
         static let ShowDurationPickerSegueIdentifier = "Show Duration Picker Identifier"
+        static let ShowStatisticsSegueIdentifier = "Show Statistics Segue Identifier"
     }
     
     /*

@@ -45,8 +45,7 @@ class TimingViewController: UIViewController, TurnOffTiming
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if motion == .MotionShake {
-            // TODO: shake 出分析饼图
-            performSegueWithIdentifier(Constant.ShowStatisticsSegueIdentifier, sender: event)
+            performSegueWithIdentifier(Constant.TimeToProjectSegueIdentifier, sender: event)
         }
     }
 
@@ -80,9 +79,14 @@ class TimingViewController: UIViewController, TurnOffTiming
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constant.TimeToProjectSegueIdentifier {
-            let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
-            ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
-            ptvc.timingVC = self
+            switch sender {
+            case nil:
+                let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
+                ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
+                ptvc.timingVC = self
+            case let event where event is UIEvent: break
+            default: break
+            }
         }
     }
     
@@ -119,7 +123,6 @@ class TimingViewController: UIViewController, TurnOffTiming
     // MARK: - Constains
     struct Constant {
         static let TimeToProjectSegueIdentifier = "TimeToProjectSegueIdentifier"
-        static let ShowStatisticsSegueIdentifier = "ShowStatisticsSegueIdentifier"
         
         static let WadeSuspend = "Wade_suspend"
         var WadeOntheGo = "Wade_onthego" + String(arc4random()%UInt32(6))
