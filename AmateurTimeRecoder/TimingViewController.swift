@@ -80,15 +80,9 @@ class TimingViewController: UIViewController, TurnOffTiming
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constant.TimeToProjectSegueIdentifier {
-            switch sender {
-            case let motionEvent where motionEvent is UIEvent:
-                break
-            case nil:
-                let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
-                ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
-                ptvc.timingVC = self
-            default: break
-            }
+            let ptvc = segue.destinationViewController.containerController as! ProjectsTableViewController
+            ptvc.timeIntervals = TimeInterval(from: from, to: NSDate())
+            ptvc.timingVC = self
         }
     }
     
