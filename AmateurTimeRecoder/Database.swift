@@ -15,16 +15,14 @@ class Database {
     func insert(fileName: String, obj: NSObject, key: String) {
         let data = NSMutableData()
         archiver = NSKeyedArchiver(forWritingWithMutableData: data)
-        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-        let filePath = path.stringByAppendingPathComponent(fileName)
+        let filePath = (getDocumentPath() as NSString).stringByAppendingPathComponent(fileName)
         archiver.encodeObject(obj, forKey: key)
         archiver.finishEncoding()
         data.writeToFile(filePath, atomically: true)
     }
     
     func read(fileName: String, key: String) -> AnyObject? {
-        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-        let filePath = path.stringByAppendingPathComponent(fileName)
+        let filePath = (getDocumentPath() as NSString).stringByAppendingPathComponent(fileName)
         if let unarchiveData = NSData(contentsOfFile: filePath) {
             let unarchiver = NSKeyedUnarchiver(forReadingWithData: unarchiveData)
             return unarchiver.decodeObjectForKey(key)
@@ -33,8 +31,15 @@ class Database {
     }
     
     func delFile(fileName: String) {
-        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-        let filePath = path.stringByAppendingPathComponent(fileName)
-        try! NSFileManager().removeItemAtPath(filePath)
+        let filePath = (getDocumentPath() as NSString).stringByAppendingPathComponent(fileName)
+        let fm = NSFileManager()
+        if fm.fileExistsAtPath(filePath) {
+            try! fm.removeItemAtPath(filePath)
+        }
+    }
+    
+    // MARK: - Internal functions
+    private func getDocumentPath() -> String {
+        return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     }
 }
