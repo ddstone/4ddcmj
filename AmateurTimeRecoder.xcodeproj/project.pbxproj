@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183BE0221CF406C000C6B529 /* MDRotatingPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BE0211CF406C000C6B529 /* MDRotatingPieChart.swift */; };
 		183C45FA1CED323B00ECEFA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C45F91CED323B00ECEFA9 /* AppDelegate.swift */; };
 		183C45FF1CED323B00ECEFA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183C45FD1CED323B00ECEFA9 /* Main.storyboard */; };
 		183C46041CED323B00ECEFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183C46021CED323B00ECEFA9 /* LaunchScreen.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183BE0211CF406C000C6B529 /* MDRotatingPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDRotatingPieChart.swift; sourceTree = "<group>"; };
 		183C45F61CED323B00ECEFA9 /* AmateurTimeRecoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmateurTimeRecoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		183C45F91CED323B00ECEFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		183C45FE1CED323B00ECEFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 				189FBC8D1CED5B9F00C369F0 /* Module */,
 				189FBC981CED654000C369F0 /* View */,
 				189FBC971CED651700C369F0 /* Controller */,
-				189FBC8E1CED5BAD00C369F0 /* Utility */,
+				189FBC8E1CED5BAD00C369F0 /* Support */,
 				183C460B1CED325900ECEFA9 /* Assets.xcassets */,
 				183C46021CED323B00ECEFA9 /* LaunchScreen.storyboard */,
 				183C46051CED323B00ECEFA9 /* Info.plist */,
@@ -92,13 +94,14 @@
 			name = Module;
 			sourceTree = "<group>";
 		};
-		189FBC8E1CED5BAD00C369F0 /* Utility */ = {
+		189FBC8E1CED5BAD00C369F0 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				183C46111CED3DC600ECEFA9 /* Utility.swift */,
 				183C460F1CED3B0900ECEFA9 /* Database.swift */,
+				183BE0211CF406C000C6B529 /* MDRotatingPieChart.swift */,
 			);
-			name = Utility;
+			name = Support;
 			sourceTree = "<group>";
 		};
 		189FBC971CED651700C369F0 /* Controller */ = {
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				183C46121CED3DC600ECEFA9 /* Utility.swift in Sources */,
+				183BE0221CF406C000C6B529 /* MDRotatingPieChart.swift in Sources */,
 				189FBC9C1CED65A000C369F0 /* ProjectTableViewCell.swift in Sources */,
 				189FBC921CED5BD500C369F0 /* TimeInterval.swift in Sources */,
 				183C46101CED3B0900ECEFA9 /* Database.swift in Sources */,
