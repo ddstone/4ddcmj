@@ -9,6 +9,15 @@
 import UIKit
 
 class Utility {
+    class func list_dir(path: String) {
+        let urls = try! NSFileManager().contentsOfDirectoryAtPath(path)
+        if !urls.isEmpty {
+            for url in urls {
+                NSLog("%@", url)
+            }
+        }
+    }
+    
     static func presentTwoButtonAlert(controller: UIViewController, title: String, message: String, fun: ((UIAlertAction) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
